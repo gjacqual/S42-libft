@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjacqual <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: gjacqual <gjacqual@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2021/05/15 16:22:23 by gjacqual         ###   ########.fr        #
+#    Updated: 2021/10/16 21:53:04 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,10 +66,12 @@ $(NAME):  ${OBJS}
 	ar rcs ${NAME} $(OBJS)
 
 clean:
-		$(RM) $(OBJS)
+	@$(RM) $(OBJS)
+	@echo "Libft is Cleaned"
 
 fclean: clean
-		$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "Libft is Full Cleaned"	
 
 re:		fclean all
 
