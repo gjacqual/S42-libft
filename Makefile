@@ -6,7 +6,7 @@
 #    By: gjacqual <gjacqual@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2021/10/16 21:53:04 by gjacqual         ###   ########.fr        #
+#    Updated: 2021/10/18 22:46:43 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ RM	= rm -f
 all: $(NAME)
 
 .c.o:
-		${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
+		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME):  ${OBJS}
 	ar rcs ${NAME} $(OBJS)
