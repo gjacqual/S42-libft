@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacqual <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 15:34:14 by gjacqual          #+#    #+#             */
-/*   Updated: 2021/05/15 17:10:04 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/01/22 04:52:23 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_str_counter(char const *s, char c)
 	nextstr = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c && nextstr == 1 )
+		if (s[i] == c && nextstr == 1)
 			nextstr = 0;
 		if (s[i] != c && nextstr == 0)
 		{
