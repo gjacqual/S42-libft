@@ -3,76 +3,79 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gjacqual <gjacqual@student.21-school.ru    +#+  +:+       +#+         #
+#    By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2021/10/18 22:46:43 by gjacqual         ###   ########.fr        #
+#    Updated: 2022/02/02 16:59:35 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libft.a
+# Program conf
+NAME		:= libft.a
 
-SRCS	= ft_putchar_fd.c\
-	ft_putstr_fd.c\
-	ft_memset.c\
-	ft_isdigit.c\
-	ft_isalpha.c\
-	ft_memcmp.c\
-	ft_memcpy.c\
-	ft_bzero.c\
-	ft_atoi.c\
-	ft_memchr.c\
-	ft_strlen.c\
-	ft_strmapi.c\
-	ft_strncmp.c\
-	ft_tolower.c\
-	ft_toupper.c\
-	ft_isalnum.c\
-	ft_isascii.c\
-	ft_isprint.c\
-	ft_calloc.c\
-	ft_memccpy.c\
-	ft_memmove.c\
-	ft_strchr.c\
-	ft_strrchr.c\
-	ft_putnbr_fd.c\
-	ft_strjoin.c\
-	ft_putendl_fd.c\
-	ft_itoa.c\
-	ft_strdup.c\
-	ft_strlcat.c\
-	ft_strnstr.c\
-	ft_strlcpy.c\
-	ft_substr.c\
-	ft_strtrim.c\
-	ft_split.c
-	
-	
+# Compilation Parameters
 
-OBJS 	= $(SRCS:.c=.o)
+CC			:= gcc
+CFLAGS		:= -Wall -Wextra -Werror
+RM			:= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror
+# Includes
+INC			:= libft.h
+# Sources
+SRCS	:= 	ft_putchar_fd.c\
+			ft_putstr_fd.c\
+			ft_memset.c\
+			ft_isdigit.c\
+			ft_isalpha.c\
+			ft_memcmp.c\
+			ft_memcpy.c\
+			ft_bzero.c\
+			ft_atoi.c\
+			ft_memchr.c\
+			ft_strlen.c\
+			ft_strmapi.c\
+			ft_strncmp.c\
+			ft_tolower.c\
+			ft_toupper.c\
+			ft_isalnum.c\
+			ft_isascii.c\
+			ft_isprint.c\
+			ft_calloc.c\
+			ft_memccpy.c\
+			ft_memmove.c\
+			ft_strchr.c\
+			ft_strrchr.c\
+			ft_putnbr_fd.c\
+			ft_strjoin.c\
+			ft_putendl_fd.c\
+			ft_itoa.c\
+			ft_strdup.c\
+			ft_strlcat.c\
+			ft_strnstr.c\
+			ft_strlcpy.c\
+			ft_substr.c\
+			ft_strtrim.c\
+			ft_split.c
+		
+# Object files
+OBJS 		:= ${SRCS:.c=.o}
 
-CC	= gcc
+# Targets
+all: ${NAME}
 
-RM	= rm -f
+${NAME}		: ${OBJS}
+		ar rcs ${NAME} ${OBJS}
+		@echo "Libft is Ready"
 
-all: $(NAME)
-
-.c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
-$(NAME):  ${OBJS}
-	ar rcs ${NAME} $(OBJS)
-
-clean:
-	@$(RM) $(OBJS)
+#Utils
+clean		:
+	@${RM} ${OBJS}
 	@echo "Libft is Cleaned"
 
-fclean: clean
-	@$(RM) $(NAME)
+fclean		:	clean
+	@${RM} ${NAME}
 	@echo "Libft is Full Cleaned"	
 
-re:		fclean all
+re			:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY		:	all clean fclean re
