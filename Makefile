@@ -6,7 +6,7 @@
 #    By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2022/02/02 16:59:35 by gjacqual         ###   ########.fr        #
+#    Updated: 2022/02/06 14:09:03 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		:= libft.a
 
 # Compilation Parameters
 
-CC			:= gcc
+CC			:= clang
 CFLAGS		:= -Wall -Wextra -Werror
 RM			:= rm -f
 
@@ -55,18 +55,26 @@ SRCS	:= 	ft_putchar_fd.c\
 			ft_strlcpy.c\
 			ft_substr.c\
 			ft_strtrim.c\
-			ft_split.c
-		
+			ft_split.c\
+			ft_striteri.c\
+
+SRCS_B	:=	ft_lstnew.c
+
 # Object files
 OBJS 		:= ${SRCS:.c=.o}
+OBJS_B 		:= ${SRCS_B:.c=.o}
 
 # Targets
-all: ${NAME}
+all: 		${NAME}
 
-${NAME}		: ${OBJS}
-		ar rcs ${NAME} ${OBJS}
-		@echo "Libft is Ready"
+${NAME}		:	${OBJS}
+				ar rcs ${NAME} ${OBJS}
+				@echo "Libft is Ready"
 
+# bonus		:	${OBJS_B}
+# 				ar rcs ${NAME} ${OBJS_B}
+# 				@echo "Libft with Bonus is Ready"
+				
 #Utils
 clean		:
 	@${RM} ${OBJS}
@@ -78,4 +86,12 @@ fclean		:	clean
 
 re			:	fclean all
 
-.PHONY		:	all clean fclean re
+
+# for unit_tests in Linux
+.PHONY:	so
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS)
+
+
+.PHONY:	all clean fclean re bonus
