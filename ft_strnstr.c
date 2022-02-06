@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacqual <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 15:15:46 by gjacqual          #+#    #+#             */
-/*   Updated: 2021/05/15 16:35:51 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:20:00 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return ((char *)haystack);
 	while (hayc != '\0' && len-- >= nlen)
 	{
-		if ((ft_strncmp(haystack, needle, nlen) == 0) && (*haystack == c))
+		if ((!ft_strncmp(haystack, needle, nlen)) && (*haystack == c))
 			return ((char *)haystack);
 		haystack++;
 	}

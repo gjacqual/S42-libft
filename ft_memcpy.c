@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacqual <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 20:31:42 by gjacqual          #+#    #+#             */
-/*   Updated: 2021/05/10 18:03:23 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/02/03 13:41:11 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	str2 = (unsigned char *)dst;
 	i = 0;
 	if (!dst && !src)
-		return (0);
+		return (NULL);
 	while (i < n)
 	{
 		str2[i] = str1[i];

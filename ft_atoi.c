@@ -3,20 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gjacqual <gjacqual@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 19:05:48 by gjacqual          #+#    #+#             */
-/*   Updated: 2021/10/12 20:09:17 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/02/06 13:53:28 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static long	long_max_detect(unsigned long number, int sign)
+{
+	if (number > LONG_MAX)
+	{
+		if (sign == -1)
+			number = 0;
+		else
+			number = LONG_MAX;
+	}	
+	return (number);
+}
+
 int	ft_atoi(const char *str)
 {
-	int	number;
-	int	sign;
-	int	i;
+	unsigned long	number;
+	int				sign;
+	int				i;
 
 	i = 0;
 	number = 0;
@@ -34,5 +46,6 @@ int	ft_atoi(const char *str)
 		number = (number * 10) + (str[i] - 48);
 		i++;
 	}
+	number = long_max_detect(number, sign);
 	return (number * sign);
 }
