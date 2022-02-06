@@ -6,7 +6,7 @@
 #    By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2022/02/06 14:09:03 by gjacqual         ###   ########.fr        #
+#    Updated: 2022/02/06 22:10:19 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ SRCS	:= 	ft_putchar_fd.c\
 			ft_isascii.c\
 			ft_isprint.c\
 			ft_calloc.c\
-			ft_memccpy.c\
 			ft_memmove.c\
 			ft_strchr.c\
 			ft_strrchr.c\
@@ -57,6 +56,7 @@ SRCS	:= 	ft_putchar_fd.c\
 			ft_strtrim.c\
 			ft_split.c\
 			ft_striteri.c\
+			ft_memccpy.c
 
 SRCS_B	:=	ft_lstnew.c
 
@@ -71,10 +71,16 @@ ${NAME}		:	${OBJS}
 				ar rcs ${NAME} ${OBJS}
 				@echo "Libft is Ready"
 
-# bonus		:	${OBJS_B}
-# 				ar rcs ${NAME} ${OBJS_B}
-# 				@echo "Libft with Bonus is Ready"
-				
+bonus		:	${OBJS_B}
+				ar rcs ${NAME} ${OBJS_B}
+				@echo "Libft with Bonus is Ready"
+
+# for unit_tests in Linux
+.PHONY:	so
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS)
+
 #Utils
 clean		:
 	@${RM} ${OBJS}
@@ -85,13 +91,5 @@ fclean		:	clean
 	@echo "Libft is Full Cleaned"	
 
 re			:	fclean all
-
-
-# for unit_tests in Linux
-.PHONY:	so
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
-
 
 .PHONY:	all clean fclean re bonus

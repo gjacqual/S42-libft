@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 18:41:37 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/02/06 02:47:41 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/02/06 22:17:55 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
-
 
 /* Part 1 - Libc functions */
 
@@ -64,6 +63,11 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
+/* List manipulation */
+
+t_list *ft_lstnew(void *content);
+
+/* My - Additional functions */
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 
 typedef struct s_list
