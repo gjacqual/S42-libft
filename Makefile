@@ -6,7 +6,7 @@
 #    By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2022/02/07 17:57:45 by gjacqual         ###   ########.fr        #
+#    Updated: 2022/02/08 00:37:42 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ OBJS 		:= ${SRCS:.c=.o}
 OBJS_B 		:= ${SRCS_B:.c=.o}
 
 # Targets
-all: 		${NAME}
+all: 		 ${NAME}
 
 ${NAME}		:	${OBJS}
 				ar rcs ${NAME} ${OBJS}
@@ -86,8 +86,8 @@ bonus		:	${OBJS_B}
 # for unit_tests in Linux
 .PHONY:	so
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(SRCS_B)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJS_B)
 
 #Utils
 clean		:
