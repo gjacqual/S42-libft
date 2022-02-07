@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 18:41:37 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/02/06 22:17:55 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/02/07 02:25:41 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
 /* Part 1 - Libc functions */
 
@@ -65,15 +71,17 @@ void	ft_putnbr_fd(int n, int fd);
 
 /* List manipulation */
 
-t_list *ft_lstnew(void *content);
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+void	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /* My - Additional functions */
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
-
-typedef struct s_list
-{
-	void			*context;
-	struct s_list	*next;
-}					t_list;
 
 #endif
