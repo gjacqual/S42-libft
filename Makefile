@@ -6,21 +6,21 @@
 #    By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2022/02/08 00:37:42 by gjacqual         ###   ########.fr        #
+#    Updated: 2022/02/08 02:13:47 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program conf
-NAME		:= libft.a
+NAME	:=	libft.a
 
 # Compilation Parameters
 
-CC			:= clang
-CFLAGS		:= -Wall -Wextra -Werror
-RM			:= rm -f
+CC	:= clang
+CFLAGS	:= -Wall -Wextra -Werror
+RM	:= rm -f
 
 # Includes
-INC			:= libft.h
+INC		:= libft.h
 # Sources
 SRCS	:= 	ft_putchar_fd.c\
 			ft_putstr_fd.c\
@@ -69,29 +69,45 @@ SRCS_B	:=	ft_lstnew.c\
 			ft_lstmap.c
 
 # Object files
-OBJS 		:= ${SRCS:.c=.o}
-OBJS_B 		:= ${SRCS_B:.c=.o}
+OBJS_DIR	:=	./objs
+OBJS_B_DIR	:=	./objs_bonus
+
+OBJS	:=  ${addprefix ${OBJS_DIR}/, ${notdir ${SRCS:.c=.o}}}
+OBJS_B	:=  ${addprefix ${OBJS_B_DIR}/, ${notdir ${SRCS_B:.c=.o}}}
 
 # Targets
-all: 		 ${NAME}
+all	:	${NAME}
 
-${NAME}		:	${OBJS}
+
+${NAME}	:	${OBJS}
 				ar rcs ${NAME} ${OBJS}
 				@echo "Libft is Ready"
-
-bonus		:	${OBJS_B}
+				
+bonus	:	${OBJS_B}
 				ar rcs ${NAME} ${OBJS_B}
 				@echo "Libft with Bonus is Ready"
+
+${OBJS_DIR}: 
+			@mkdir -p ${OBJS_DIR}
+${OBJS_B_DIR}:
+			@mkdir -p ${OBJS_B_DIR}
+${OBJS_DIR}/%.o : %.c ${INC} Makefile | ${OBJS_DIR}  
+			${CC} ${CFLAGS} -c $< -o $@
+			@echo "The object file is ready in OBJS_DIR"
+
+${OBJS_B_DIR}/%.o : %.c ${INC} Makefile | ${OBJS_B_DIR} 
+			${CC} ${CFLAGS} -c $< -o $@
+			@echo "The object BONUS file is ready in OBJS_B_DIR"
 
 # for unit_tests in Linux
 .PHONY:	so
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(SRCS_B)
-	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJS_B)
+	${CC} -nostartfiles -fPIC ${CFLAGS} ${SRCS} ${SRCS_B}
+	gcc -nostartfiles -shared -o libft.so ${OBJS} ${OBJS_B}
 
 #Utils
 clean		:
-	@${RM} ${OBJS} ${OBJS_B}
+	@rm -rf ${OBJS_DIR} ${OBJS_B_DIR}
 	@echo "Libft is Cleaned"
 
 fclean		:	clean
