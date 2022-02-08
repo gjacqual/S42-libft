@@ -6,7 +6,7 @@
 #    By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2022/02/08 02:13:47 by gjacqual         ###   ########.fr        #
+#    Updated: 2022/02/08 03:01:01 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	:=	libft.a
 
 # Compilation Parameters
 
-CC	:= clang
+CC	:= gcc
 CFLAGS	:= -Wall -Wextra -Werror
 RM	:= rm -f
 
@@ -75,29 +75,34 @@ OBJS_B_DIR	:=	./objs_bonus
 OBJS	:=  ${addprefix ${OBJS_DIR}/, ${notdir ${SRCS:.c=.o}}}
 OBJS_B	:=  ${addprefix ${OBJS_B_DIR}/, ${notdir ${SRCS_B:.c=.o}}}
 
+# bonus include
+ifdef BONUS_MODE
+	OBJ_SWITCH = ${OBJS_B} 
+else
+	OBJ_SWITCH = ${OBJS}
+endif
+
 # Targets
 all	:	${NAME}
 
 
-${NAME}	:	${OBJS}
-				ar rcs ${NAME} ${OBJS}
+${NAME}	:	${OBJ_SWITCH}
+				ar rcs $@ $^
 				@echo "Libft is Ready"
 				
-bonus	:	${OBJS_B}
-				ar rcs ${NAME} ${OBJS_B}
-				@echo "Libft with Bonus is Ready"
+bonus	:	
+				${MAKE} BONUS_MODE=1 ${NAME}
 
 ${OBJS_DIR}: 
 			@mkdir -p ${OBJS_DIR}
 ${OBJS_B_DIR}:
 			@mkdir -p ${OBJS_B_DIR}
+			
 ${OBJS_DIR}/%.o : %.c ${INC} Makefile | ${OBJS_DIR}  
 			${CC} ${CFLAGS} -c $< -o $@
-			@echo "The object file is ready in OBJS_DIR"
 
 ${OBJS_B_DIR}/%.o : %.c ${INC} Makefile | ${OBJS_B_DIR} 
 			${CC} ${CFLAGS} -c $< -o $@
-			@echo "The object BONUS file is ready in OBJS_B_DIR"
 
 # for unit_tests in Linux
 .PHONY:	so
