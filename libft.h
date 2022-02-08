@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 18:41:37 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/02/07 02:25:41 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/02/08 21:24:49 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-/* My - Additional functions */
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 
 #endif
