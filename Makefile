@@ -6,7 +6,7 @@
 #    By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:47:04 by gjacqual          #+#    #+#              #
-#    Updated: 2022/02/08 03:01:01 by gjacqual         ###   ########.fr        #
+#    Updated: 2022/02/13 16:17:21 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,8 +87,8 @@ all	:	${NAME}
 
 
 ${NAME}	:	${OBJ_SWITCH}
-				ar rcs $@ $^
-				@echo "Libft is Ready"
+				@ar rcs $@ $^
+				@echo "\033[0;32mLibft is Ready\033[0m"
 				
 bonus	:	
 				${MAKE} BONUS_MODE=1 ${NAME}
@@ -113,11 +113,11 @@ so:
 #Utils
 clean		:
 	@rm -rf ${OBJS_DIR} ${OBJS_B_DIR}
-	@echo "Libft is Cleaned"
+	@echo "\033[0;96mLibft is Cleaned\033[0m"
 
 fclean		:	clean
 	@${RM} ${NAME}
-	@echo "Libft is Full Cleaned"	
+	@echo "\033[0;96mLibft is Full Cleaned\033[0m"	
 
 re			:	fclean all
 
