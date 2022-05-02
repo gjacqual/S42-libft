@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 18:41:37 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/02/08 22:02:22 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/05/02 19:51:42 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include "get_next_line.h"
 
 typedef struct s_list
 {
@@ -68,6 +69,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 
 /* List manipulation */
 
@@ -82,6 +84,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /* My - Additional functions */
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif
