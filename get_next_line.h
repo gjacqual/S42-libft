@@ -6,7 +6,7 @@
 /*   By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:27:59 by gjacqual          #+#    #+#             */
-/*   Updated: 2022/05/02 19:46:38 by gjacqual         ###   ########.fr       */
+/*   Updated: 2022/05/03 14:55:03 by gjacqual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 34
 # endif
+
+/*
+*	Identify platform/compiler from preprocessor macros
+*	https://stackoverflow.com/questions/4605842/how-to-identify-\
+*	platform-compiler-from-preprocessor-macros
+*/
 
 # ifdef __linux__
 #  define OPEN_MAX 1024
