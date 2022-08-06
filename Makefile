@@ -15,7 +15,7 @@ NAME		:=	libft.a
 
 # Compilation Parameters
 
-CC			:= gcc
+CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 RM			:= rm -f
 
