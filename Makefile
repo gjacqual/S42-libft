@@ -68,7 +68,7 @@ SRCS		:= 	ft_putchar_fd.c\
 				ft_lstmap.c\
 				ft_strcmp.c\
 				get_next_line.c
-				
+
 # Object files
 OBJS_DIR	:=	./objs
 
